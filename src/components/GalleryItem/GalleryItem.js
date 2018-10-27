@@ -11,23 +11,47 @@ import React, { Component } from 'react';
 
 class GalleryItem extends Component {
 
- render() {
-   return (
-       <div className="container">
-           <div>
-               <p><img src={this.props.item.path} alt={this.props.item.description}/></p>
-               <p>{this.props.item.description}</p>
-               <p>This has {this.props.item.likes} likes.</p>
-           </div>
-       </div>
-    // <GridList key={this.props.item.id} cols={3} cellHeight={100}>
-    //     <GridListTile>
-    //         <img src={this.props.item.path} alt={this.props.item.description} />
-    //     </GridListTile>
-    //     {this.props.item.description}{this.props.item.path}{this.props.item.likes}
-    // </GridList>
-   );
- }
+    // 
+    constructor(props) {
+        super(props);
+        this.state = {buttonClicked: false};
+      }
+
+    // Called when the submit button is pressed
+    handleClick = (event) => {
+        // console.log('in handle click event', this.state.buttonClicked);
+        this.setState({
+            buttonClicked: !this.state.buttonClicked,
+          });
+    }
+ 
+    render() {
+
+    let htmlCode;
+    if (this.state.buttonClicked) {
+        htmlCode = <div>
+                        <p>{this.props.item.description}</p>
+                        <p>This has {this.props.item.likes} likes.</p>
+                    </div>
+    } else {
+        htmlCode = <div>
+                        <p><img src={this.props.item.path} alt={this.props.item.description}/></p>
+                        <p>This has {this.props.item.likes} likes.</p>            
+                    </div>;
+    };
+
+    return (
+        <div className="container" key={this.props.item.id} onClick={this.handleClick}>
+            <div>{htmlCode}</div>
+        </div>
+        // <GridList key={this.props.item.id} cols={3} cellHeight={100}>
+        //     <GridListTile>
+        //         <img src={this.props.item.path} alt={this.props.item.description} />
+        //     </GridListTile>
+        //     {this.props.item.description}{this.props.item.path}{this.props.item.likes}
+        // </GridList>
+    );
+    }
 }
 
 export default GalleryItem;

@@ -9,7 +9,7 @@ class GalleryList extends Component {
         <Grid container>
          {
            this.props.list.map( gallery =>
-             <GalleryItem key={gallery.id} item={gallery}/>
+             <GalleryItem key={gallery.id} clickedOn={'false'} item={gallery}/>
            )
          }
         </Grid>
