@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 class GalleryList extends Component {
 
-
   render() {
 
     console.log('this.props in galleryList:', this.props)

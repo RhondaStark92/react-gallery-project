@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './GalleryItem.css';
 
 // import Grid from '@material-ui/core/Grid';
 // import GridList from '@material-ui/core/GridList';
@@ -27,26 +28,27 @@ class GalleryItem extends Component {
           });
     }
 
+    // call updateLikes function in App to update the likes
     handleLoveMe = (event) => {
-        console.log('in love me pressed', event.currentTarget.value);
-        // let galleryId = event.currentTarget.value;
         this.props.updateLikes(event.currentTarget.value);
-        // console.log('this.props in gallery Item', this.props)
     }
-    
  
     render() {
 
+    // display image or description depending on state of click
     let htmlCode;
     if (this.state.buttonClicked) {
-        htmlCode = <div><p>{this.props.item.description}</p></div>
+        htmlCode = <p>{this.props.item.description}</p>
     } else {
-        htmlCode = <div><p><img src={this.props.item.path} alt={this.props.item.description}/></p></div>;
+        htmlCode = <p><img src={this.props.item.path} alt={this.props.item.description}/></p>;
     };
 
     return (
-        <div className="container" value={this.props.item.id} key={this.props.item.id} onClick={this.handleClick}>
-            <div>{htmlCode}</div>
+        <div className="container">
+            <div className= "fixed" value={this.props.item.id} 
+                key={this.props.item.id} onClick={this.handleClick}>
+                {htmlCode}
+            </div>
             <button value={this.props.item.id} onClick={this.handleLoveMe}>Love Me!</button>
             <p>This has {this.props.item.likes} likes.</p>
         </div>

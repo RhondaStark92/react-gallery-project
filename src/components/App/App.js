@@ -39,7 +39,6 @@ class App extends Component {
       url: 'gallery/like/' + galleryId,
       data: {}
     }).then((response) => {
-      console.log('after PUT this is the response', response);
       this.getGallery();
     }).catch( (error) => {
       alert("error", error)
@@ -55,12 +54,6 @@ class App extends Component {
         </header>
         <br/>
         <GalleryList list={this.state.galleryList} updateLikes={this.updateLikes}/>
-        {/* <p>Gallery goes here</p>
-        <ul>
-          {this.state.galleryList.map(gallery =>
-            <li key={gallery.id}>{gallery.description}{gallery.likes}<img src={gallery.path}/></li>
-          )}
-        </ul> */}
       </div>
     );
   }
