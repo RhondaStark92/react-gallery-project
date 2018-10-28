@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+
 import axios from 'axios';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList';
@@ -89,16 +91,18 @@ class App extends Component {
   } // end updateLikes
 
   deleteGallery = (galleryId) => {
-    // DELETE call to remove the gallery item
-    axios ({
-      method: 'DELETE',
-      url: 'gallery/' + galleryId,
-      data: {}
-    }).then((response) => {
-      this.getGallery();
-    }).catch( (error) => {
-      alert("error", error)
-    })
+    if (window.confirm("Are you sure")) {
+      // DELETE call to remove the gallery item
+      axios ({
+        method: 'DELETE',
+        url: 'gallery/' + galleryId,
+        data: {}
+      }).then((response) => {
+        this.getGallery();
+      }).catch( (error) => {
+        alert("error", error)
+      })
+    }
   } // end deleteGallery
 
   // Render the DOM

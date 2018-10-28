@@ -23,7 +23,7 @@ class GalleryList extends Component {
 // use this component.
 GalleryList.propTypes = {
   updateLikes: PropTypes.func.isRequired,
-  updateLikes: PropTypes.func.isRequired,
+  deleteGallery: PropTypes.func.isRequired,
 };
 
 export default GalleryList;

@@ -7,7 +7,7 @@ const pool = require('../modules/pool.js');
 // PUT Route
 router.put('/like/:id', (req, res) => {
     let galleryId = req.params.id;
-    // Direction will come from the client and say up or down
+    
     sqlText = `UPDATE gallery SET likes=likes+1 WHERE id=$1`;
 
     pool.query(sqlText, [galleryId])
@@ -19,6 +19,20 @@ router.put('/like/:id', (req, res) => {
             res.sendStatus(500);
         })
 }); // END PUT Route
+
+// DELETE Route
+router.delete('/:id', (req, res) => {
+    let galleryId = req.params.id;
+    sqlText = `DELETE FROM gallery WHERE id=$1`;
+    pool.query(sqlText, [galleryId])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        })
+}); // END DELETE Route
 
 
 // GET Route
