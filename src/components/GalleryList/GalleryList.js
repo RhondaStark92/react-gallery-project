@@ -3,12 +3,9 @@ import Grid from '@material-ui/core/Grid';
 import GalleryItem from '../GalleryItem/GalleryItem';
 import PropTypes from 'prop-types';
 
-
 class GalleryList extends Component {
 
   render() {
-
-    console.log('this.props in galleryList:', this.props)
     return (
           <Grid container>
           {
@@ -18,8 +15,8 @@ class GalleryList extends Component {
           }
           </Grid>
     );
-  }
-}
+  } // end render
+} // end GalleryList
 
 // This will tell the parent component what functions it must implement to 
 // use this component.

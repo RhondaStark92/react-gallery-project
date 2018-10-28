@@ -22,7 +22,6 @@ class GalleryItem extends Component {
 
     // Called when the submit button is pressed
     handleClick = (event) => {
-        // console.log('in handle click event', this.state.buttonClicked);
         this.setState({
             buttonClicked: !this.state.buttonClicked,
           });
