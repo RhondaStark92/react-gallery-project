@@ -37,4 +37,18 @@ router.get('/', (req, res) => {
         })
 }) // End GET Route
 
+// Setup a POST route to add a new gallery item to the database
+router.post('/', (req, res) => {
+    const newGallery = req.body;
+    const sqlText = `INSERT INTO gallery (path, description) VALUES ($1, $2)`;
+    pool.query(sqlText, [newGallery.path, newGallery.description])
+        .then((result) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+ })
+ 
+
 module.exports = router;
