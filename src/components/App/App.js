@@ -30,6 +30,21 @@ class App extends Component {
     })
   }
 
+  // Increase number of likes for selected gallery item
+  updateLikes = (galleryId) => {
+    console.log ('on the app side', galleryId, '/like/:' + {galleryId});
+    // PUT call to update the likes
+    axios ({
+      method: 'PUT',
+      url: 'gallery/like/' + galleryId,
+      data: {}
+    }).then((response) => {
+      this.getGallery();
+    }).catch( (error) => {
+      alert("error", error)
+    })
+  }
+
   // Render the DOM
   render() {
     return (
@@ -38,13 +53,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <GalleryList list={this.state.galleryList}/>
-        {/* <p>Gallery goes here</p>
-        <ul>
-          {this.state.galleryList.map(gallery =>
-            <li key={gallery.id}>{gallery.description}{gallery.likes}<img src={gallery.path}/></li>
-          )}
-        </ul> */}
+        <GalleryList list={this.state.galleryList} updateLikes={this.updateLikes}/>
       </div>
     );
   }
