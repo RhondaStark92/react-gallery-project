@@ -59,6 +59,7 @@ class App extends Component {
     })
   } // end addGallery
  
+  
   // Get the gallery items
   getGallery = () => {
     axios ({
@@ -87,6 +88,19 @@ class App extends Component {
     })
   } // end updateLikes
 
+  deleteGallery = (galleryId) => {
+    // DELETE call to remove the gallery item
+    axios ({
+      method: 'DELETE',
+      url: 'gallery/' + galleryId,
+      data: {}
+    }).then((response) => {
+      this.getGallery();
+    }).catch( (error) => {
+      alert("error", error)
+    })
+  } // end deleteGallery
+
   // Render the DOM
   render() {
     return (
@@ -101,7 +115,8 @@ class App extends Component {
              handleChangeFor={this.handleChangeFor} 
              handleSubmit={this.addGallery} />
        </section>
-        <GalleryList list={this.state.galleryList} updateLikes={this.updateLikes}/>
+        <GalleryList list={this.state.galleryList} updateLikes={this.updateLikes}
+          deleteGallery={this.deleteGallery}/>
       </div>
     );
   } // end render

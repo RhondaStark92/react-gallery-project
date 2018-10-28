@@ -10,7 +10,8 @@ class GalleryList extends Component {
           <Grid container>
           {
             this.props.list.map( gallery =>
-              <GalleryItem key={gallery.id} item={gallery} updateLikes={this.props.updateLikes}/>
+              <GalleryItem key={gallery.id} item={gallery} updateLikes={this.props.updateLikes}
+                deleteGallery={this.props.deleteGallery}/>
             )
           }
           </Grid>
@@ -21,6 +22,7 @@ class GalleryList extends Component {
 // This will tell the parent component what functions it must implement to 
 // use this component.
 GalleryList.propTypes = {
+  updateLikes: PropTypes.func.isRequired,
   updateLikes: PropTypes.func.isRequired,
 };
 
