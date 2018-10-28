@@ -10,7 +10,8 @@ class GalleryList extends Component {
           <Grid container>
           {
             this.props.list.map( gallery =>
-              <GalleryItem key={gallery.id} item={gallery} updateLikes={this.props.updateLikes}/>
+              <GalleryItem key={gallery.id} item={gallery} updateLikes={this.props.updateLikes}
+                deleteGallery={this.props.deleteGallery}/>
             )
           }
           </Grid>
@@ -22,6 +23,7 @@ class GalleryList extends Component {
 // use this component.
 GalleryList.propTypes = {
   updateLikes: PropTypes.func.isRequired,
+  deleteGallery: PropTypes.func.isRequired,
 };
 
 export default GalleryList;

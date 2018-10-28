@@ -20,7 +20,7 @@ class GalleryItem extends Component {
         this.state = {buttonClicked: false};
       }
 
-    // Called when the submit button is pressed
+    // Called when the image div is clicked on
     handleClick = (event) => {
         this.setState({
             buttonClicked: !this.state.buttonClicked,
@@ -30,6 +30,10 @@ class GalleryItem extends Component {
     // call updateLikes function in App to update the likes
     handleLoveMe = (event) => {
         this.props.updateLikes(event.currentTarget.value);
+    }
+
+    handleDelete = (event) => {
+        this.props.deleteGallery(event.currentTarget.value);
     }
  
     render() {
@@ -49,6 +53,7 @@ class GalleryItem extends Component {
                 {htmlCode}
             </div>
             <button value={this.props.item.id} onClick={this.handleLoveMe}>Love Me!</button>
+            <button value={this.props.item.id} onClick={this.handleDelete}>Delete</button>
             <p>This has {this.props.item.likes} likes.</p>
         </div>
         // <GridList key={this.props.item.id} cols={3} cellHeight={100}>
@@ -65,6 +70,7 @@ class GalleryItem extends Component {
 // use this component.
 GalleryItem.propTypes = {
     updateLikes: PropTypes.func.isRequired,
+    deleteGallery: PropTypes.func.isRequired,
 };
 
 export default GalleryItem;
