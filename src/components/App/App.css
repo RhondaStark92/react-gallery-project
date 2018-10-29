@@ -1,10 +1,11 @@
 .App {
   text-align: center;
+  align-content: center;
 }
 
 .App-header {
-  background-color: #222;
-  height: 70px;
+  background-color: darkcyan;
+  height: 120px;
   padding: 20px;
   color: white;
 }
