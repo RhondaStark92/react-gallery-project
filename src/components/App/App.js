@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-
-
 import axios from 'axios';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList';
 import GalleryForm from '../GalleryForm/GalleryForm';
+import NavBar from '../Navbar.js/Navbar'
+import 'typeface-roboto';
 
 class App extends Component {
 
@@ -90,6 +91,7 @@ class App extends Component {
     })
   } // end updateLikes
 
+  // delete gallery item from database
   deleteGallery = (galleryId) => {
     if (window.confirm("Are you sure")) {
       // DELETE call to remove the gallery item
@@ -108,20 +110,16 @@ class App extends Component {
   // Render the DOM
   render() {
     return (
+      // <Grid container alignItems="center"
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Gallery of my life</h1>
-        </header>
-        <br/>
-        <section>
-         <h2>Add Gallery Item</h2>
-         <GalleryForm newGallery={this.state.newGallery}
-             handleChangeFor={this.handleChangeFor} 
-             handleSubmit={this.addGallery} />
-       </section>
+        <CssBaseline />
+        <NavBar/>
+        <GalleryForm newGallery={this.state.newGallery}
+            handleChangeFor={this.handleChangeFor} 
+            handleSubmit={this.addGallery} />
         <GalleryList list={this.state.galleryList} updateLikes={this.updateLikes}
-          deleteGallery={this.deleteGallery}/>
-      </div>
+            deleteGallery={this.deleteGallery}/>
+     </div>
     );
   } // end render
 
