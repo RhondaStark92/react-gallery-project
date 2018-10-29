@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
     const sqlText = `SELECT * FROM gallery ORDER BY id`;
     pool.query(sqlText)
         .then((result) => {
-            console.log(`Got stuff back from the database`, result);
+            // console.log(`Got stuff back from the database`, result);
             res.send(result.rows);
         })
         .catch((error) => {

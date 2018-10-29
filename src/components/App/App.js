@@ -114,11 +114,16 @@ class App extends Component {
       <div className="App">
         <CssBaseline />
         <NavBar/>
-        <GalleryForm newGallery={this.state.newGallery}
-            handleChangeFor={this.handleChangeFor} 
-            handleSubmit={this.addGallery} />
-        <GalleryList list={this.state.galleryList} updateLikes={this.updateLikes}
-            deleteGallery={this.deleteGallery}/>
+        <GalleryForm 
+          newGallery={this.state.newGallery}
+          handleChangeFor={this.handleChangeFor} 
+          handleSubmit={this.addGallery} 
+        />
+        <GalleryList 
+          list={this.state.galleryList} 
+          updateLikes={this.updateLikes}
+          deleteGallery={this.deleteGallery}
+        />
      </div>
     );
   } // end render

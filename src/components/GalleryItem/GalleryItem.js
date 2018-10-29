@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import './GalleryItem.css';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,11 +13,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 class GalleryItem extends Component {
 
-    
-    constructor(props) {
-        super(props);
-        this.state = {buttonClicked: false};
-      }
+    state = {buttonClicked: true};
 
     // Called when the image div is clicked on
     handleClick = (event) => {
@@ -37,22 +33,18 @@ class GalleryItem extends Component {
  
     render() {
 
-    // display image or description depending on state of click
-    let htmlCode;
-    if (this.state.buttonClicked) {
-        htmlCode = <p>{this.props.item.description}</p>
-    } else {
-        htmlCode = <p><img src={this.props.item.path} alt={this.props.item.description}/></p>;
-    };
-
     return (
         <grid item xs={12} sm={6} lg={4} xl={3}>
         <Card className="galleryItem">
             <CardActionArea>
-                {/* <CardMedia image={this.props.item.path}/> */}
                 <CardContent value={this.props.item.id} onClick={this.handleClick}>
+                {/* ternary operator for conditional rendering */}
                 <div className="fixed">
-                    {htmlCode} 
+                {
+                    this.state.buttonClicked ?
+                    <img src={this.props.item.path} alt={this.props.item.description} /> :
+                    <div>{this.props.item.description}</div>
+                }
                 </div>
                 <p>This has {this.props.item.likes} likes.</p>
                 </CardContent>
@@ -91,9 +83,9 @@ class GalleryItem extends Component {
 
 // This will tell the parent component what functions it must implement to 
 // use this component.
-GalleryItem.propTypes = {
-    updateLikes: PropTypes.func.isRequired,
-    deleteGallery: PropTypes.func.isRequired,
-};
+// GalleryItem.propTypes = {
+//     updateLikes: PropTypes.func.isRequired,
+//     deleteGallery: PropTypes.func.isRequired,
+// };
 
 export default GalleryItem;
